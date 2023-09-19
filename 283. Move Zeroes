@@ -1,0 +1,28 @@
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+
+
+      int i,j;
+
+      int n=nums.size();
+      vector<int> vv;
+
+      for(i=0,j=0;i<n;i++){
+        if(nums[i]!=0){
+          vv.push_back(nums[i]);
+        }
+      }
+
+      int size=vv.size();
+
+      for(i=size;i<n;i++){
+        vv.push_back(0);
+      }
+
+      for(i=0;i<n;i++){
+        nums[i]=vv[i];
+      }
+        
+    }
+};
