@@ -1,0 +1,24 @@
+class Solution {
+public:
+    bool isValid(string s) {
+        int n = s.size();
+        stack<char> ss;
+
+        for (int i = 0; i < n; i++) {
+            if (s[i] == '(' || s[i] == '[' || s[i] == '{') {
+                ss.push(s[i]);
+            } else if (!ss.empty()) {
+                char aa = ss.top();
+                if ((aa == '(' && s[i] == ')') || (aa == '{' && s[i] == '}') || (aa == '[' && s[i] == ']')) {
+                    ss.pop(); // Match found, pop the opening bracket from the stack.
+                } else {
+                    return false; // Mismatched brackets, return false immediately.
+                }
+            } else {
+                return false; // No opening bracket to match the current closing bracket.
+            }
+        }
+
+        return ss.empty(); // Check if there are any remaining unmatched opening brackets.
+    }
+};
